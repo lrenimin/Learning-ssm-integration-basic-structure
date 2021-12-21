@@ -1,16 +1,32 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ASUS
-  Date: 2021/12/19
-  Time: 14:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>$Title$</title>
   </head>
+
+    <style type="text/css">
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 18px;
+      }
+      h3 {
+        height: 38px;
+        width: 180px;
+        line-height: 38px;
+        margin: 100px auto;
+        text-align: center;
+        background: blue;
+        border-radius: 4px;
+      }
+    </style>
+
   <body>
-  $END$
+
+    <h3>
+      <a href="${pageContext.request.contextPath}/user/userList">点击查看用户列表</a>
+      <a></a>
+    </h3>
+
   </body>
 </html>

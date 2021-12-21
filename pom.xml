@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lren</groupId>
-    <artifactId>ssmbuild</artifactId>
+    <artifactId>learning-ssm-integration</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -13,7 +13,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
         </dependency>
         <!--数据库驱动-->
         <!--重点注意这里：如果出现报错如：java.lang.ClassNotFoundException: com.mysql.jdbc.Driver，请重新引入依赖或修改jar版本-->
@@ -29,12 +29,6 @@
             <version>0.9.5.2</version>
         </dependency>
 
-        <!--lombok插件-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.12</version>
-        </dependency>
 
         <!--Servlet - JSP -->
 

@@ -1,12 +1,15 @@
 package com.lren.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.lren.pojo.Users;
+import com.lren.service.PageService;
 import com.lren.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -16,11 +19,17 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private PageService pageService;
 
+    /*分页并将数据返回客户端*/
     @RequestMapping("/userList")
-    public String selectAllUsers(Model model) {
-        List<Users> usersList = userService.selectAllUsers();
-        model.addAttribute("userList", usersList);
+    public String selectAllUsers(Model model,
+                                 @RequestParam(defaultValue = "1") Integer pageNum,
+                                 @RequestParam(defaultValue = "4") Integer pageSize) {
+        /*List<Users> usersList = userService.selectAllUsers();*/
+        PageInfo<Users> usersPageInfo = pageService.queryByPage(pageNum, pageSize);
+        model.addAttribute("userList", usersPageInfo);
         return "userList";
     }
     /*添加一个新的用户*/

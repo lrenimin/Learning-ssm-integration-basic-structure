@@ -1,6 +1,8 @@
 package com.lren.test;
 
+import com.github.pagehelper.PageInfo;
 import com.lren.pojo.Users;
+import com.lren.service.PageService;
 import com.lren.service.UserService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -20,6 +22,8 @@ public class UserTest {
     ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
     UserService userServiceImpl = (UserService) context.getBean("UserServiceImpl");
 
+    ApplicationContext contextPage = new ClassPathXmlApplicationContext("applicationContext.xml");
+    PageService pageServiceImpl = (PageService) contextPage.getBean("PageServiceImpl");
     @Test
     public void selectAllUsersTest() {
         List<Users> usersList = userServiceImpl.selectAllUsers();
@@ -50,5 +54,13 @@ public class UserTest {
         users.setTelephone("18776257605");
         users.setEmail("2018909386@qq.com");
         userServiceImpl.updateUserByID(users);
+    }
+    @Test
+    public void pageTest() {
+        PageInfo<Users> usersPageInfo = pageServiceImpl.queryByPage(1, 4);
+        List<Users> list = usersPageInfo.getList();
+        for (Users users : list) {
+            System.out.println(users);
+        }
     }
 }

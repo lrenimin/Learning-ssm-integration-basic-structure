@@ -14,6 +14,9 @@
     <bean id="UserServiceImpl" class="com.lren.service.impl.UserServiceImpl">
         <property name="userMapper" ref="userMapper"/>
     </bean>
+    <bean id="PageServiceImpl" class="com.lren.service.impl.PageServiceImpl">
+        <property name="pageMapper" ref="pageMapper"/>
+    </bean>
 
     <!-- 配置事务管理器 -->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

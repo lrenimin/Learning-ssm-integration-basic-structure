@@ -18,6 +18,14 @@
         from user
         where id = #{id};
     </select>
+
+    <!--Retrieve Users By Like-->
+    <select id="selectUsersByLike" parameterType="String" resultType="users">
+        select *
+        from user
+        where username like "%"#{username}"%"
+    </select>
+
     <!--//Create a new User-->
     <insert id="insertUser" parameterType="users">
         insert into user(username,password,telephone,email)

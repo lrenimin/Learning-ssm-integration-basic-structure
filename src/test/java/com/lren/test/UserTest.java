@@ -63,4 +63,12 @@ public class UserTest {
             System.out.println(users);
         }
     }
+
+    @Test
+    public void userLikeTest() {
+        List<Users> usersList = userServiceImpl.selectUsersByLike("a");
+        for (Users users : usersList) {
+            System.out.println(users);
+        }
+    }
 }

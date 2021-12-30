@@ -29,6 +29,11 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectUsersByID(id);
     }
 
+    public List<Users> selectUsersByLike(String name) {
+        return userMapper.selectUsersByLike(name);
+    }
+
+
     public int insertUser(Users users) {
         return userMapper.insertUser(users);
     }

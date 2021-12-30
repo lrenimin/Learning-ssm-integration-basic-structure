@@ -13,6 +13,15 @@ public interface UserService {
     //Retrieve all users by id
     Users selectUsersByID(@Param("id") int id);
 
+    /**
+     * @Author: lrenimin
+     * @Description: //Retrieve Users By Like
+     * @Date: 12:01 2021/12/26
+     * @Param: [name]
+     * @return: java.util.List<com.lren.pojo.Users>
+     */
+    List<Users> selectUsersByLike(@Param("username") String name);
+
     //Create a new User
     int insertUser(Users users);
 

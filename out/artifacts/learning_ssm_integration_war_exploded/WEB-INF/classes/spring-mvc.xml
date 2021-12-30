@@ -30,6 +30,16 @@
     <!--我们之前如果学过就会记得，拦截器：structs拦截器 ->
         现在使用：springmvc拦截器
     -->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            &lt;!&ndash;/** 包括路径及其子路径
+            /admin拦截的是/admin/add等等这种 , /admin/add/user不会被拦截
+            /admin拦截的是/admin/下的所有**/&ndash;&gt;
+            <mvc:mapping path="/user/**"/>
+            &lt;!&ndash;bean配置的就是拦截器&ndash;&gt;
+            <bean id="userInterceptor" class="com.lren.interceptor.UserInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
 
 
     <!--spring上传文件：

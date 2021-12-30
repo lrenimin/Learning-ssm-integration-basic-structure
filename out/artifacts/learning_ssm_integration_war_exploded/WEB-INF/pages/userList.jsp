@@ -28,13 +28,15 @@
             </div>
             <%--根据关键字查询书籍--%>
             <div class="col-md-4">
+                <form class="form-inline" action="${pageContext.request.contextPath}/user/queryUser" method="post">
+                    <input type="text" class="form-control" name="userName" placeholder="请输入关键字" required>
+                    <input type="submit" class="btn btn-primary" value="查询">
+                </form>
                 <form class="form-inline"  id="sel" action="${pageContext.request.contextPath}/user/userList" method="post">
                     <%--传递分页中的值：pageNo,pageSize--%>
                     <input type="hidden" name="pageNum" value="${userList.pageNum}" id="pageNum">
                     <input type="hidden" name="pageSize" value="${userList.pageSize}" id="pageSize">
 
-                    <input type="text" class="form-control" name="userName" placeholder="请输入关键字" required>
-                    <input type="submit" class="btn btn-primary" value="查询">
                 </form>
             </div>
             <%--显示书籍列表--%>
@@ -59,6 +61,20 @@
 
                     <tbody>
                         <c:forEach var="users" items="${userList.list}">
+                            <tr>
+                                <td>${users.getId()}</td>
+                                <td>${users.getUsername()}</td>
+                                <td>${users.getPassword()}</td>
+                                <td>${users.getTelephone()}</td>
+                                <td>${users.getEmail()}</td>
+                                <td>
+                                    <a href="${pageContext.request.contextPath}/user/updateUser/${users.getId()}">更新</a>
+                                    <a href="${pageContext.request.contextPath}/user/deleteUser/${users.getId()}">删除</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        <%--通过like查询用户细腻--%>
+                        <c:forEach var="users" items="${queryUser}">
                             <tr>
                                 <td>${users.getId()}</td>
                                 <td>${users.getUsername()}</td>
@@ -177,6 +193,17 @@
                     $("#sel").submit();
                 }
             });
+
+
+            /*使用pageHelper：存在问题或者出现问题
+            *
+            * 第一：idea中编写好完整无误的JS代码后，重新run没有生效，清缓或者把编译的target删了重新run
+            *
+            * 第二：$("#sel")。submit   注意获取的是form表单，提交的URL为分页接口
+            *
+            * 第三：点击分页数字码没有作用：查看代码是否有误：$(this)是否正确获取
+            *
+            * */
 
         </script>
 
